@@ -13,7 +13,10 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'Lato',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Color.fromRGBO(254, 206, 1, 1),
+        ),
+        primaryColor: Color.fromRGBO(255, 208, 0, 1),
         inputDecorationTheme: InputDecorationTheme(
           hintStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
