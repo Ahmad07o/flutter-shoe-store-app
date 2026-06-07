@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app_flutter/cart_provider.dart';
 import 'package:shop_app_flutter/global_variable.dart';
 
 class Cart extends StatelessWidget {
@@ -6,6 +8,7 @@ class Cart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartProvider>(context).cart;
     return Scaffold(
       appBar: AppBar(title: Center(child: Text('Cart'))),
       body: ListView.builder(
@@ -19,7 +22,52 @@ class Cart extends StatelessWidget {
               radius: 30,
             ),
             trailing: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text(
+                        'Delete',
+                        style: (Theme.of(context).textTheme.titleMedium),
+                      ),
+                      content: Text(
+                        'are you sure you want to remove product from your cart?',
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text(
+                            'No',
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Provider.of<CartProvider>(
+                              context,
+                              listen: false,
+                            ).removeProduct(cartItem);
+                            Navigator.of(context).pop();
+                          },
+                          child: Text(
+                            'Yes',
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
               icon: Icon(Icons.delete, color: Colors.red),
             ),
             title: Text(
