@@ -70,7 +70,7 @@ class _ProductListState extends State<ProductList> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       backgroundColor: selectedFilter == filter
-                          ? Color.fromRGBO(255, 208, 0, 1)
+                          ? Theme.of(context).colorScheme.primary
                           : Color.fromRGBO(245, 247, 249, 1),
                       side: BorderSide(color: Color.fromRGBO(245, 247, 249, 1)),
                       label: Text(filter),

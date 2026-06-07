@@ -82,7 +82,7 @@ class _ProductDetailState extends State<ProductDetail> {
                             child: Chip(
                               label: Text(size.toString()),
                               backgroundColor: selectedSize == size
-                                  ? const Color.fromRGBO(225, 255, 0, 1)
+                                  ? Theme.of(context).colorScheme.primary
                                   : Colors.white,
                             ),
                           ),
